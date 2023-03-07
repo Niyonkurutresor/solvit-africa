@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+:root{
+    --buttonColor:rgb(112, 112, 147);
+    --color1:white
+}
+
+body{
+    padding-top: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+input{
+    display: block;
+    margin: .5rem 0;
+    width: 20rem;
+    height: 2rem;
+    border: none;
+    border-bottom: 2px solid ;
+    border-left: 2px solid ;
+    border-radius: .5rem;
+    outline: none;
+    padding-left: .4rem;
+}
+::placeholder{
+    text-align: center;
+    color: black;
+}
+button{
+    background-color:var(--buttonColor);
+    color: var(--color1);
+    width: 8rem;
+    height: 2rem;
+    border: none;
+    margin: .5rem 0 ;
+    cursor: pointer;
+}
+.start{
+    display: block;
+}
+.start a{
+    background-color: var(--buttonColor);
+    display: block;
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    margin: .5rem 0; 
+    font-size: larger; 
+}
+
+
+.google button{
+    background-color: rgb(148, 72, 72);
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: .4rem;
+}

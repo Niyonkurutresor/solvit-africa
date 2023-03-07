@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-family:sans-serif;
+    box-sizing: border-box; 
+}
+
+:root{
+    --size:5rem;
+    --white:white;
+    --whiteblue:rgb(233, 237, 246);
+    --blue:rgb(7, 50, 219);
+    --gray:gray;
+    --green:rgb(6, 148, 6);
+    --black: rgba(0,0,0,1);
+}
+button{
+    cursor: pointer;
+}
+hr{
+    margin: 1rem 0 ;
+}
+
+body{
+    background-color: var(--whiteblue);
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 50%;
+    height: fit-content;
+    padding: 2rem;
+    text-align: center;
+}
+h2{
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+p{
+    margin-bottom:1rem ;
+    font-size: larger;
+    text-align: start;
+}
+span{
+    color: blue;
+}
+
+input::placeholder{
+    color:var(--black);
+    font-size: large;
+    color: blue;
+}
+.imagesellection input{
+    
+    display:none
+}
+
+
+
+input{
+    display: block;
+    width: 100%;
+    border: none;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 2px;
+    height: 2rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    outline: none;
+    font-size: large;
+    background-color: var(--whiteblue);
+}
+
+
+button{
+    width: 8rem;
+    height: 2rem;
+    background-color: var(--blue);
+    border: none;
+    border-radius: .5rem;
+    color: var(--white);
+    font-size: large;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width:1023px){
+    form{
+        width: 80%;
+    }
+}
