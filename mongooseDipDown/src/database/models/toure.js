@@ -68,10 +68,18 @@ const schema = new mongoose.Schema({
         type:String,
         default:'./public/image/001.jpg'
     },
+    toureRevStat:Array,
 },{
     toJSON:{virtuals:true},
     toObject:{virtuals:true},
 });
+
+// indexing the price. once you search for proce it will loop through the price
+// instead of looping through the documents it's self.
+// as we create compound index it will not require to create index for individual field
+// we need to carefully study wich field we have to indexing based on access of our application
+//
+schema.index({price:1,ratings:1,})
 
 // virtual property 
 schema.virtual('name_and_location').get(function(){ return this.name+' '+ this.location})

@@ -9,7 +9,7 @@ const routs = express()
 
 routs.use('/:toureId/review',reviewRouter)
 
-routs.get('/all',isLoggedIn,only('admin'),toureController.getAllToure)
+routs.get('/all',toureController.getAllToure)
 routs.get('/singleToure/:id',isLoggedIn,only('user','guide','admin'),toureController.getSingleToure)
 routs.get('/specific',isLoggedIn,only('user','guide','admin'),toureController.specificToure)
 routs.get('/statistic',toureController.aggregating)

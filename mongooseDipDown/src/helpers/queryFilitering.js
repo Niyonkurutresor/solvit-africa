@@ -1,5 +1,3 @@
-import { query } from "express"
-
 export const queryFiltering = (query)=>{
     const copy = { ...query }
     const sortby = query.sort;
@@ -16,7 +14,7 @@ export const queryFiltering = (query)=>{
         fields = ''
     }
 
-    //excruding some fields fomr query
+    //excruding some fields from query
     const excrude = ['page', 'sort', 'limit', 'fields'];
     excrude.forEach((el)=>{
         delete copy[el]

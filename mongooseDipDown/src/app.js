@@ -28,11 +28,10 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json({limit:'10mb'}));
 
-//sanitize data from no sql injection
-// if lookes into req.body,req.params and req.query and fielter out all $ and . as it's the way mongoose works
+
 app.use(mongoSinitize())
 
-// xss. user insert malisious HTML code 
+
 app.use(xss())
 
 app.use('/api',routs);

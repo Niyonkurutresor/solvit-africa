@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
 }
 )
 
+// once you set field as unique. it create index for it. and then it will use that index to query 
+// related data. this is what we try to do whene we are indexing to imporove the performence of database.
+
+
 //virtual populating
 userSchema.virtual('names').get(function(){
     return 'rukara'

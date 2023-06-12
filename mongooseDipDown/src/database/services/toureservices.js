@@ -35,7 +35,7 @@ import { Toure } from '../models/toure.js';
 
     static findSpecific =async(toure,sort,fields,skip,limit)=>{
         try {
-          return await Toure.find(toure).sort(sort).select(fields).skip(skip).limit(limit)
+          return await Toure.find(toure).sort(sort).select(fields).skip(skip).limit(limit).explain()
         } catch (error) {
             throw error;
         }
@@ -105,7 +105,7 @@ export default toureServices;
 
 
 
-/* we should set aggregate funciton up in toure schema to add something into pipe line buth
+/* we should set aggregate funciton up in toure module to add something into pipe line buth
 the problem is this: any time you run every aggragation function that plugni you created in module will be 
 applied. so we should handel that in other way.for avoiding that conflict
  */

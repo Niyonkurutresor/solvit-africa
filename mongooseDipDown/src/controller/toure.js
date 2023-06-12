@@ -28,8 +28,7 @@ class toureController{
 
     static async specificToure(req,res,next){
         try {
-            const query = req.query
-            const object = queryFiltering(query);
+            const object = queryFiltering(req.query);
             const toure = await toureServices.findSpecific(object.copy,object.sortby,object.fields,object.skip,object.limit);
             if (!toure) return out(res,404,'There is no corespond Toure');//this is not error becouse app is working but there is no match
             out(res,200,toure);

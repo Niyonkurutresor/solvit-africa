@@ -27,7 +27,7 @@ class userServices {
 
     static async getSingleUser(id){
         try {
-            return User.findById(id).select('+password')
+            return User.findById(id).select('+password').explain()
         } catch (error) {
             throw error
         }
