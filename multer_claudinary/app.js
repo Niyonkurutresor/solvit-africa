@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 import cloudinary from 'cloudinary';
 import path from 'path';
 import fs from 'fs';
-import { error } from 'console';
+import { title } from 'process';
 
 //db connection 
 mongoose.connect("mongodb://0.0.0.0:27017/MulterCraudinary");
@@ -111,13 +111,35 @@ app.post("/post",upload,async (req,res,next) => {
 app.delete("/delete/:id",async(req,res,next) =>{
     const publicId = req.params.id;
     const result = await Post.find({publicId:publicId});
-    if(!result) return res.status(5000).json({message:'Fail'})
+    if(!result) return res.status(5000).json({message:'There is no such kind of post found'})
     await cloudinary.v2.uploader.destroy(publicId);
     await Post.deleteOne({publicId: publicId});
-
     res.status(200).json({message:'Deleted successfuly'})
 })
 
+
+app.post('/update/:id',upload,async(req,res,next) =>{
+    try {
+            const fileId = req.params.id;
+            const { title } = req.body;
+            if(req.file.mimetype.includes("image")){
+            const result = await cloudinary.v2.uploader.upload(req.file.path, { public_id: fileId });
+            const update = await Post.findOneAndUpdate({publicId:fileId},{title,content:result.secure_url});
+            res.status(201).json({ message: 'Post is updated successfuly', newpatsh: result.secure_url });
+            
+            }
+            else if(req.file.mimetype.includes("video")){
+                const result = await cloudinary.v2.uploader.upload(req.file.path, {  resource_type: 'video',public_id: fileId });
+            const update = await Post.findOneAndUpdate({publicId:fileId},{title,content:result.secure_url});
+            res.status(201).json({ message: 'Post is updated successfuly', newpatsh: result.secure_url });
+            }
+            //Delete local file on the pc
+            fs.unlinkSync(req.file.path);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to upload video and create post' });
+      }
+})
 
 app.use((err,req,res,next) =>{ 
     res.status(500).json({message: 'Fail', error:err});
